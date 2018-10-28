@@ -25,7 +25,7 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 %               default value 1
 % file_figure   name of the figure to be saved
 % file_table    name of the table to be saved
-% shape_file    the function accept either [] for the case of choosing the ROI interactively or 
+% shape_file    the function accept either 0 for the case of choosing the ROI interactively or 
 %               [path and name] of the shape file to be read as ROI
 % 
 % Return save table of p-value in .csv format, plot of first and last
@@ -52,27 +52,33 @@ if ~iscell(files)
     tmp = textscan(files,'%s','Delimiter',',')';
     files = tmp{:}';
 end
+
 if ~iscell(pols_name)
     tmp = textscan(pols_name,'%s','Delimiter',',')';
     pols_name = tmp{:}';
 end
+
 if ~iscell(times_name)
     tmp = textscan(times_name,'%s','Delimiter',',')';
     times_name = tmp{:}';
 end
+
 if ~isnumeric(Nol)
     Nol = str2double(Nol);
 end
+
 if ~isnumeric(npols)
     npols = str2double(npols);
 end
 if ~isnumeric(Pvalue)
     Pvalue = str2double(Pvalue);
 end
+
 if ~isnumeric(times)
     times = str2double(times);
 end
-if nargin < 7
+
+if nargin < 8
     flag_size = 0;
     flag_area = 1;
     path_name = fullfile(pwd,'/');
