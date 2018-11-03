@@ -1,10 +1,10 @@
 function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,flag_area,file_figure,file_table,shape_file)
-% WICHMAIN or Wichart Change main function identify the changes in 
-% 
+% WICHMAIN or Wichart Change main function identify the changes in a sequence of SAR images
+%
 % WiCHMain(files,pols_name,times_name,Nol,Pvalue,times,file_figure,file_table,shape_file)
 % Input:
 % files         a cell structure containing all the images path and name
-%               Example: 
+%               Example:
 %               {'C:\Download\201712.VV_0'},{'C:\Download\201712.VV_1'}
 %               {'C:\Download\201712.VH_0'},{'C:\Download\201712.VV_1'} and
 %               so on, the program support geotiff, envi and emi images
@@ -13,7 +13,7 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 %               after the name of image following a dot
 %               Example: .VV .VH
 % times_name    a vector containing either a sequence of number 0:10 or a
-%               personalize numbers such as 062, 064, 067 at the end of the 
+%               personalize numbers such as 062, 064, 067 at the end of the
 %               name of the files
 % Nol           number of looks
 % Pvalue        a significant threshold for p-test
@@ -25,11 +25,12 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 %               default value 1
 % file_figure   name of the figure to be saved
 % file_table    name of the table to be saved
-% shape_file    the function accept either 0 for the case of choosing the ROI interactively or 
+% shape_file    the function accept either 0 for the case of choosing the ROI interactively or
 %               [path and name] of the shape file to be read as ROI
-% 
-% Return save table of p-value in .csv format, plot of first and last
-% change plus frequency of the change both as pdf and 3 bands geotiff.
+%
+% Return a table of average p-values in .csv format, a plot of first, last and
+%        frequency of the changes both as pdf and 3 bands images with the same
+%        format as original images.
 %
 % Behnaz Pirzamanbein
 % bepi@dtu.dk
@@ -37,6 +38,7 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 % Department of Applied Mathematics and Computer Science
 % Technical University of Denmark
 % First version 17 July 2018
+% last version 03-11-2018
 
 p = gcp('nocreate');
 if isempty(p)
@@ -116,7 +118,7 @@ else
     if ~isempty(shape_file)
         if ~str2double(shape_file)
             shape_file = [];
-        else 
+        else
             tmp = textscan(shape_file,'%s')';
             shape_file = tmp{:}';
         end
@@ -145,7 +147,7 @@ switch flag_size
                 Ptable([],Prob_ROI,times,file_table_ROI);
                 plotROI(fig,ROI)
                 file_figure = [file_figure,'_ROI'];
-        end            
+        end
         save_fig(fig,file_figure,'landscape');
     case 1
         [When, Prob] = WiCHLine(files,pols_name,times_name,Nol,Pvalue,npols);
@@ -167,7 +169,7 @@ switch flag_size
                 Ptable([],Prob_ROI,times,file_table_ROI);
                 plotROI(fig,ROI)
                 file_figure = [file_figure,'_ROI'];
-        end            
+        end
         save_fig(fig,file_figure,'landscape');
 end
 disp('/////////////////////////////////////////////////////////');

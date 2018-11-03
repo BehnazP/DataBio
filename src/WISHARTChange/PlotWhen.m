@@ -1,13 +1,18 @@
 function  A = PlotWhen(fig,when,times,ROI)
-
-% make the table of p-value of test statistics 
-
+%
+% PLOTWHEN makes a figure of p-value of omnibus test statistics as a three suplot
+%          containing first change, last change and frequency of the change
+% A = PlotWhen(fig,when,times,ROI)
 % input:
-% pP		-		p-values from WiCHProb function
+% fig		  -		currect figure handle or in case of [] the function creats once
+% when    -   a 3D matrix (nrow x ncol x times) showing if lnR shows change after each time point for each pixel
 % times		-		number of time, 4th dimension of the data
-% 
+% ROI 		-   plot the region of interest if it exists
+%
 % output:
-% a table for different mean  P-value
+% A 			- a matrix same size of 'when' with three bands:
+%						[first change,last change,frequency of the change]
+% PLOTWHEN by Behnaz Pirzamanbein bepi@dtu.dk, last version 2018-11-03
 
 if isempty(fig)
 	figure('Name','Results','NumberTitle','off');
@@ -25,7 +30,7 @@ imagesc(changefirst)
 colormap(gca,cmap(1:nsz,:));
 caxis([0,nsz-1]);
 
-if nsz > 6 
+if nsz > 6
     a1 = colorbar;
     v = repmat(2:nsz-1,[2 1]);v = v(:)';
     labels = strsplit(sprintf('[t_{%d}, t_{%d}]\n',[1,v,times]),'\n');labels = labels([end,1:end-1]);labels{1}='NoChange';
@@ -53,7 +58,7 @@ subplot(132);
 imagesc(changelast)
 colormap(gca,cmap(1:nsz,:));
 caxis([0,nsz-1]);
-if nsz > 6 
+if nsz > 6
     a3 = colorbar;
     a3.Ticks = ticks(indx);
     a3.TickLabels = labels(indx);
@@ -63,7 +68,7 @@ else
 end
 title('Last change')
 axis image
-%set(gca,'xtick',[],'ytick',[]);			
+%set(gca,'xtick',[],'ytick',[]);
 axis off
 
 % frequency of change
@@ -94,5 +99,5 @@ end
 
 % for saving give back 3layered image [firstchange,lastchange, frequency of change]
 A = cat(3,changefirst,changelast,freq);
- 
+
 end

@@ -1,4 +1,10 @@
 function ROI = readROI(shape_file,fig)
+%
+% READROI reads the region of interest, the function takes a shape file or works
+%         interactivley by choosing a ROI from the PlotWhen function figure result
+% return  ROI structure containing xy coordinates and mask
+% READROI by Behnaz Pirzamanbein bepi@dtu.dk, last version 2018-11-03
+
 if ischar(shape_file)
     S = shaperead(shape_file);
 

@@ -1,28 +1,29 @@
 function pP = WiCHProb(wc,ROI)
-
-% print_Ptable takes struct from WiCH as input and outputs table of
-% mean (1-P)-values, i.e., no-change probabilities for region of interest, ROI
 %
-% WiCHProb(wc,ROI,opt);
+% WICHPROB takes struct from WishartChange function as input and outputs average
+%          (1-P)-values, i.e., no-change probabilities for region of interest
 %
-% input
-% wc 	-	is struct from WiCH, 
-% ROI 	-	is region of interest,
+% pP = WiCHProb(wc,ROI);
 %
-% output:
-% pP 	-	the mean P-value of the area
-
+% Input
+% wc 	  -	is a struct from WiCHParallel function based on WishartChange function
+% ROI 	-	is a region of interest
+%
+% Output:
+% pP   	-	the average P-value of the ROI
+%
 % (c) Copyright 2016
 % Allan Aasbjerg Nielsen, PhD
 % alan@dtu.dk, http://people.compute.dtu.dk/alan
 % 14-17 Jan 2016
-
+%
 % modified by Behnaz Pirzamanbein
 % bepi@dtu.dk
 % Image Analysis and Computer Graphics section
 % Department of Applied Mathematics and Computer Science
 % Technical University of Denmark
 % First version 24 May 2018
+% last version 2018-11-03
 
 if ~isstruct(wc)
     error('wc must be struct as output from WiCH')

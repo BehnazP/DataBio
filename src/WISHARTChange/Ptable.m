@@ -1,13 +1,18 @@
 function Ptable(tab,pP,times,save_name)
-
-% make the table of p-value of test statistics 
-
+%
+% PTABLE creates and saves a table containing average p-values of omnibus test
+%        statistics for the area of interest
+%
 % input:
-% pP		-		p-values from WiCHProb function
-% times		-		number of time, 4th dimension of the data
-% 
-% output:
-% a table for different mean  P-value
+% tab 	  	-   currect table handle and if its empty creats one
+% pP		    -		p-values from WiCHProb function
+% times		  -		number of time, 4th dimension of the data
+% save_name - specific name for saving the table
+%
+% return a table for P-value for illustrtaion and save it in txt format
+% PTABLE by Behnaz Pirzamanbein bepi@dtu.dk, last version 2018-11-03
+
+
 if isempty(tab)
 	tab = uifigure;
     tab.Name = 'P-values';
@@ -32,7 +37,7 @@ uit = uitable('Parent',tab,'Data',tdata,...
             'ColumnWidth','auto',...
             'RowName',rownames,...
             'Position',[10,10,600,300]);
-        
+
 %save the table into text file
 colN = strsplit(sprintf('t%d_to_t%d\n',[1:times-2;repmat(times,[1,times-2])]),'\n');
 colN{times-1} = sprintf('t%d_to_t%d',times-1,times);
@@ -44,6 +49,6 @@ rowN{1} = 'Omnibus';
 newP1 = num2cell(saveP,1);
 tdata1 = table(newP1{:},'VariableNames',colN,'RowNames',rowN);
 name = [save_name,'.txt'];
-writetable(tdata1,name,'WriteRowNames',true,'Delimiter',' ')  
+writetable(tdata1,name,'WriteRowNames',true,'Delimiter',' ')
 
 end

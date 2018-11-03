@@ -1,31 +1,30 @@
 function when = WiCHWhen(wc,pval)
-
-% WiCHWhen takes struct wc from wcRjl as input and outputs occurrence of change
 %
-% when = WiCHWhen(wc,0.9999);
+% WiCHWHEN takes struct wc from WishartChange function as input
+% returns occurrence of changes per pixels
 %
-% input:
-% wc 	-	is struct from WiCH, 
-% pval 	-   is probability threshold for change prob, 
-%			(default 0.99)
-% output:
+% when = WiCHWhen(wc,pval);
+%
+% Input:
+% wc 	  -	  is struct from WiCHParallel function based on WishartChange function
+% pval 	-   is probability threshold for change prob, (default 0.99)
+% Output:
 % when 	-	is 3D matrix (nrow x ncol x ntimes) showing if lnR shows change after each time point for each pixel
-
-% (when) Copyright 2016
+%
+% Copyright 2016
 % Allan Aasbjerg Nielsen, PhD
 % alan@dtu.dk, http://people.compute.dtu.dk/alan
 % 2 May 2016
-
 % modified by Behnaz Pirzamanbein
 % bepi@dtu.dk
 % Image Analysis and Computer Graphics section
 % Department of Applied Mathematics and Computer Science
 % Technical University of Denmark
 % First version 24 May 2018
-
+% last version 2018-11-03
 
 if ~isstruct(wc)
-    error('wc must be struct as output from wcRjl')
+    error('wc must be struct as output from WiCHParallel')
 end
 
 if nargin<2
@@ -40,7 +39,6 @@ end
 [nrow,ncol,ntime] = size(wc(1).P);
 
 when = zeros(nrow,ncol,ntime-1);
-
 if nrow ~= 1
     h = waitbar(0,'Processing...','Name','WiCHWhen');
 end
@@ -66,5 +64,4 @@ end
 if nrow ~=1
     close(h)
 end
-
 end

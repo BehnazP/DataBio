@@ -1,4 +1,16 @@
 function saveWhen(image,save_name,files)
+% SAVEWHEN  save the image of PlotWhen in .pdf format
+%
+% saveWhen(image,save_name,files)
+% image        -  a matrix with 3 bands: [first change,last change,frequency of the change]
+%                 this is the results of function PlotWhen
+% save_name    -  the name to save the images
+% files      -  a cell structure containing all the images path and name
+%               Example: in windows
+%               {'C:\Download\201712.VV_0'},{'C:\Download\201712.VV_1'}
+%               {'C:\Download\201712.VH_0'},{'C:\Download\201712.VV_1'} and
+%               so on, the name SHOULD contain .'pol_name'_'time_name'.format%
+% SAVEWHEN by Behnaz Pirzamanbein bepi@dtu.dk, last version 2018-11-03
 
 [~, ~, ext] = fileparts(files{1});
 
