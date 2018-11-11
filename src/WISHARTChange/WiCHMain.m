@@ -8,7 +8,7 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 %               {'C:\Download\201712.VV_0'},{'C:\Download\201712.VV_1'}
 %               {'C:\Download\201712.VH_0'},{'C:\Download\201712.VV_1'} and
 %               so on, the program support geotiff, envi and emi images
-% npols         a number represent the polarization
+% npols         a number represent the polarization type
 % pols_name     a char vector containing the name of polarization appear
 %               after the name of image following a dot
 %               Example: .VV .VH

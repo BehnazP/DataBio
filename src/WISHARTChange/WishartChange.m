@@ -11,12 +11,12 @@ function [P,ff,rho,omega2,lnR,sumX,logDet] = WishartChange(X,noL,pol)
 % images     - a 4D matrix containing images (NxM) for P different polarization
 %                and T different time points; images (NxMxPxT)
 % noL        - number of looks for images
-%	pol	       - 9 = 'full',
+% pol	     - 9 = 'full',
 %              5 = 'azim',
 %              4 = 'dual',
 %              3 = 'fdiag',
 %              2 = 'ddiag',
-%              1 = 'single'%
+%              1 = 'single'
 % Output
 % lnR     - logarithm of test quantities Q and Rj,
 %           For example: ln(Q)   is lnR(:,:,1),
