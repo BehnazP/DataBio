@@ -12,10 +12,10 @@ The page contains:
    * MADChange_commandline_Linux
    * MADChange_commandline_Windows
 2. WISHARTChange
-  * WISHARTChange_app_Linux
-  * WISHARTChange_app_Windows
-  * WISHARTChange_commandline_Linux
-  * WISHARTChange_commandline_Windows
+   * WISHARTChange_app_Linux
+   * WISHARTChange_app_Windows
+   * WISHARTChange_commandline_Linux
+   * WISHARTChange_commandline_Windows
 3. Test Data for WISHARTChange
 4. Test Data for MADChange
 
