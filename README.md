@@ -30,9 +30,7 @@ or
 you can download the full MATLAB Runtime from
 [MATLAB Runtime](https://se.mathworks.com/products/compiler/matlab-runtime.html)
 
-In folder `Test Data for WISHARTChange` a time series of SAR data is available for diagonal dual polarization (VV and VH) in GeoTIFF format acquired from Google Earth Engine (GEE),
-
-`detail`
+In folder `Test Data for WISHARTChange` a time series of SAR data is available for diagonal dual polarization (VV and VH) in two formats: GeoTIFF and ENVI with header files. The data is acquired from Google Earth Engine (GEE), for more detail see the ReadMe file.
 
 `Test Data for MADChange` contains two time points of optical images with 4 bands (B2,B3,B4,B8) from GEE in two formats, GeoTIFF and ENVI with a header file.
 
