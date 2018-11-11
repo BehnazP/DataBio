@@ -36,4 +36,4 @@ In folder `Test Data for WISHARTChange` a time series of SAR data is available f
 
 `Test Data for MADChange` contains two time points of optical images with 4 bands (B2,B3,B4,B8) from GEE in two formats, GeoTIFF and ENVI with a header file.
 
-For more specific detail, see the README.md files in each folders.
+For more specific detail, see the `Software_description.pdf`.
