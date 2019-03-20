@@ -3,18 +3,9 @@
 ### [Citation](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=7131)
 The usage of the Standalone software and individual codes are free, however attribution to the publication is required.
 
-### Reference
 Pirzamanbein B., Nielsen A. A. (2019). Standalone software for for detecting changes in {SAR} and optical images. ESA Conference on Big Data from Space (BiDS'19), DOi: 10.2760/848593.
-@CONFERENCE\{IMM2019-07131,
-    author       = "B. Pirzamanbein and A. A. Nielsen",
-    title        = "Standalone software for for detecting changes in {SAR} and optical images",
-    year         = "2019",
-    month        = "feb",
-    pages        = "205-208",
-    booktitle    = "{ESA} Conference on Big Data from Space (BiDS)",
-    address      = "Munich, Germany",
-    url          = "http://doi.org/10.2760/848593",
-    }
+
+see (http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=7131)
 
 For downloading software MADChange and WISHATChange based on the source code in the src folder check:
 
