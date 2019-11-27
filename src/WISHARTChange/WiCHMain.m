@@ -1,4 +1,4 @@
-function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,flag_area,file_figure,file_table,shape_file)
+function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,flag_area,file_figure,file_table,file_Q,shape_file)
 % WICHMAIN or Wichart Change main function identify the changes in a sequence of SAR images
 %
 % WiCHMain(files,pols_name,times_name,Nol,Pvalue,times,file_figure,file_table,shape_file)
@@ -25,12 +25,15 @@ function WiCHMain(files,npols,pols_name,times_name,Nol,Pvalue,times,flag_size,fl
 %               default value 1
 % file_figure   name of the figure to be saved
 % file_table    name of the table to be saved
+% file_Q        name of the Q images to be saved
 % shape_file    the function accept either 0 for the case of choosing the ROI interactively or
 %               [path and name] of the shape file to be read as ROI
 %
 % Return a table of average p-values in .csv format, a plot of first, last and
 %        frequency of the changes both as pdf and 3 bands images with the same
-%        format as original images.
+%        format as original images, and if process strategy choosen 
+%        "Save in workplace", Omnibus tests Q are also saved 
+%        as a N x M x time-1 image in same format as original images.
 %
 % Behnaz Pirzamanbein
 % bepi@dtu.dk
@@ -85,6 +88,7 @@ if nargin < 8
     flag_area = 1;
     path_name = fullfile(pwd,'/');
     file_figure = fullfile(path_name,'figure');
+    file_Q = fullfile(path_name,'Q');
     file_table = fullfile(path_name,'table');
     shape_file = [];
 else
@@ -102,6 +106,16 @@ else
         else
             tmp = textscan(file_figure,'%s')';
             file_figure = tmp{:}';
+        end
+    end
+    
+    if ~ischar(file_Q)
+        if isempty(file_Q)
+            path = fullfile(pwd,'/');
+            file_Q = fullfile(path,'Q');
+        else
+            tmp = textscan(file_Q,'%s')';
+            file_Q = tmp{:}';
         end
     end
 
@@ -139,12 +153,17 @@ switch flag_size
                 Prob = WiCHProb(wc);
                 % print the table
                 Ptable([],Prob,times,file_table);
+                % save the Q = 1-wc(time).P(:,:,1)
+                saveQ(wc,file_Q,files)
             case 0
                 ROI  = readROI(shape_file,fig);
                 Prob_ROI = WiCHProb(wc,ROI.mask);
                 % print the table
                 file_table_ROI = [file_table,'_ROI'];
                 Ptable([],Prob_ROI,times,file_table_ROI);
+                % save the Q = 1-wc(time).P(:,:,1)
+                saveQ(wc,file_Q,files,ROI.mask)
+                % plot the RIO on the figures
                 plotROI(fig,ROI)
                 file_figure = [file_figure,'_ROI'];
         end

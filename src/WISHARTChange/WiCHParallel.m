@@ -9,7 +9,7 @@ function wc = WiCHParallel(X,noL,pol)
 % images     -  a 4D matrix containing images (NxM) for P different polarization
 %                and T different time points; images (NxMxPxT)
 % noL        - number of looks for X
-%	pol	       - 9 = 'full',
+%	pol	     - 9 = 'full',
 %              5 = 'azim',
 %              4 = 'dual',
 %              3 = 'fdiag',
