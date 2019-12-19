@@ -17,13 +17,17 @@ The page contains:
 1. MADChange
    * MADChange_app_Linux
    * MADChange_app_Windows
+   * MADChange_app_Mac
    * MADChange_commandline_Linux
    * MADChange_commandline_Windows
+   * MADChange_commandline_Mac
 2. WISHARTChange
    * WISHARTChange_app_Linux
    * WISHARTChange_app_Windows
+   * WISHARTChange_app_Mac
    * WISHARTChange_commandline_Linux
    * WISHARTChange_commandline_Windows
+   * WISHARTChange_commandline_Mac
 3. Test Data for WISHARTChange
 4. Test Data for MADChange
 
